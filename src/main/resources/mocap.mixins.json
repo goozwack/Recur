@@ -1,0 +1,32 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.mt1006.mocap.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins":
+  [
+    "EntityMixin",
+    "LivingEntityMethodMixin",
+    "ServerLevelMixin",
+    "fields.EntityMixin",
+    "fields.LivingEntityMixin",
+    "fields.AvatarMixin",
+    "fields.AbstractHorseMixin",
+    "fields.PigMixin",
+    "fields.BoatMixin",
+    "fields.HorseMixin",
+    "fields.LevelMixin",
+    "fields.LlamaMixin",
+    "fabric.BlockItemMixin",
+    "fabric.EntityIdMixin",
+    "fabric.DoubleHighBlockItemMixin",
+    "fabric.FlintAndSteelItemMixin"
+  ],
+  "client":
+  [
+    "CommandSuggestionsMixin",
+    "AbstractClientPlayerMixin",
+    "fabric.MinecraftMixin"
+  ],
+  "injectors": { "defaultRequire": 1 }
+}

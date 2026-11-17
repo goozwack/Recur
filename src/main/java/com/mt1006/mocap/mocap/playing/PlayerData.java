@@ -1,0 +1,170 @@
+package com.mt1006.mocap.mocap.playing;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mt1006.mocap.command.CommandInfo;
+import com.mt1006.mocap.mocap.settings.Settings;
+import com.mt1006.mocap.utils.ProfileUtils;
+import com.mt1006.mocap.utils.Utils;
+import org.jetbrains.annotations.Nullable;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Scanner;
+
+public class PlayerData
+{
+	private static final String MINESKIN_API_URL = "https://api.mineskin.org/get/uuid/";
+	public final @Nullable String name;
+	public final SkinSource skinSource;
+	public final String skinPath;
+
+	public PlayerData(@Nullable String name)
+	{
+		this.name = name;
+		this.skinSource = SkinSource.DEFAULT;
+		this.skinPath = Utils.NULL_STR;
+	}
+
+	public PlayerData(@Nullable String name, SkinSource skinSource, @Nullable String skinPath)
+	{
+		this.name = name;
+		this.skinSource = skinSource;
+		this.skinPath = Utils.toNotNullStr(skinPath);
+	}
+
+	public PlayerData(Scanner scanner)
+	{
+		String name = null;
+		SkinSource skinSource = SkinSource.DEFAULT;
+		String skinPath = Utils.NULL_STR;
+
+		try
+		{
+			String nameStr = scanner.next();
+			name = nameStr.length() <= 16 ? Utils.toNullableStr(nameStr) : null;
+
+			skinPath = scanner.next();
+
+			// Pre-1.3 compatibility
+			if (!skinPath.equals(Utils.NULL_STR)) { skinSource = SkinSource.FROM_MINESKIN; }
+
+			skinSource = SkinSource.fromID(Integer.parseInt(scanner.next()));
+		}
+		catch (Exception ignore) {}
+
+		this.name = name;
+		this.skinSource = skinSource;
+		this.skinPath = skinPath;
+	}
+
+	public String dataToStr()
+	{
+		return String.format("%s %s %d", Utils.toNotNullStr(name), skinPath, skinSource.id);
+	}
+
+	public PropertyMap addSkinToPropertyMap(CommandInfo commandInfo, PropertyMap propertyMap)
+	{
+		Multimap<String, Property> mutableMap = HashMultimap.create(propertyMap);
+		switch (skinSource)
+		{
+			case FROM_PLAYER:
+				GameProfile tempProfile = ProfileUtils.getGameProfile(commandInfo.source.getServer(), skinPath);
+				PropertyMap tempPropertyMap = tempProfile.properties();
+
+				if (!tempPropertyMap.containsKey("textures"))
+				{
+					commandInfo.sendFailure("mocap.playing.start.warning.skin.profile");
+					break;
+				}
+
+				if (mutableMap.containsKey("textures")) { mutableMap.get("textures").clear(); }
+				mutableMap.putAll("textures", tempPropertyMap.get("textures"));
+				break;
+
+			case FROM_FILE:
+				mutableMap.put(CustomSkinManager.PROPERTY_ID, new Property(CustomSkinManager.PROPERTY_ID, skinPath));
+				break;
+
+			case FROM_MINESKIN:
+				if (!Settings.ALLOW_MINESKIN_REQUESTS.val) { break; }
+				Property skinProperty = propertyFromMineskinURL(skinPath);
+
+				if (skinProperty == null)
+				{
+					commandInfo.sendFailure("mocap.playing.start.warning.skin.mineskin");
+					break;
+				}
+
+				if (mutableMap.containsKey("textures")) { mutableMap.get("textures").clear(); }
+				mutableMap.put("textures", skinProperty);
+				break;
+		}
+		return new PropertyMap(mutableMap);
+	}
+
+	public PlayerData mergeWithParent(PlayerData parent)
+	{
+		if (skinSource != SkinSource.DEFAULT) { return new PlayerData(name != null ? name : parent.name, skinSource, skinPath); }
+		else  { return new PlayerData(name != null ? name : parent.name, parent.skinSource, parent.skinPath); }
+	}
+
+	private @Nullable Property propertyFromMineskinURL(String mineskinURL)
+	{
+		String mineskinID = mineskinURL.contains("/") ? mineskinURL.substring(mineskinURL.lastIndexOf('/') + 1) : mineskinURL;
+		String mineskinApiURL = MINESKIN_API_URL + mineskinID;
+
+		try
+		{
+			URL url = new URI(mineskinApiURL).toURL();
+
+			URLConnection connection = url.openConnection();
+			if (!(connection instanceof HttpsURLConnection)) { return null; }
+			HttpsURLConnection httpsConnection = (HttpsURLConnection)connection;
+
+			httpsConnection.setUseCaches(false);
+			httpsConnection.setRequestMethod("GET");
+
+			Scanner scanner = new Scanner(httpsConnection.getInputStream());
+			String text = scanner.useDelimiter("\\A").next();
+
+			scanner.close();
+			httpsConnection.disconnect();
+
+			String value = text.split("\"value\":\"")[1].split("\"")[0];
+			String signature = text.split("\"signature\":\"")[1].split("\"")[0];
+
+			return new Property("textures", value, signature);
+		}
+		catch (Exception exception) { return null; }
+	}
+
+	public enum SkinSource
+	{
+		DEFAULT(0),
+		FROM_PLAYER(1),
+		FROM_FILE(2),
+		FROM_MINESKIN(3);
+
+		public final int id;
+
+		SkinSource(int id)
+		{
+			this.id = id;
+		}
+
+		public static SkinSource fromID(int id)
+		{
+			for (SkinSource s : values())
+			{
+				if (s.id == id) { return s; }
+			}
+			return DEFAULT;
+		}
+	}
+}

@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "package": "dev.recur.client.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "client": [
+    "PauseScreenMixin",
+    "EntityRenderStateMixin",
+    "EntityRendererMixin",
+    "AvatarRendererMixin",
+    "LivingEntityRendererMixin",
+    "ClonePushMixin",
+    "NameTagMixin",
+    "ClonePickMixin",
+    "CrosshairMixin",
+    "LockedSlotMixin",
+    "SoundManagerMixin",
+    "AbstractSoundInstanceAccessor",
+    "CloneHurtSoundMixin",
+    "CloneNameMixin",
+    "ArmorFadeMixin",
+    "CapeFadeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

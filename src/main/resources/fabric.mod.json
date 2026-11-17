@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "recur",
+	"version": "${version}",
+	"name": "Recur",
+	"description": "The whole world resets when anyone dies (or time runs out) and your past selves replay as clones. Includes a multiplayer fork of Motion Capture by mt1006.",
+	"authors": ["Goozwack", "mt1006 (Motion Capture, LGPL-3.0)"],
+	"contact": {
+		"sources": "https://github.com/goozwack/Recur",
+		"issues": "https://github.com/goozwack/Recur/issues"
+	},
+	"license": "LGPL-3.0-only",
+	"icon": "assets/recur/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["com.mt1006.mocap.MocapMod", "dev.recur.Recur"],
+		"client": ["dev.recur.client.RecurClient"],
+		"voicechat": ["dev.recur.voice.RecurVoicePlugin"],
+		"modmenu": ["dev.recur.client.ModMenuIntegration"]
+	},
+	"mixins": [
+		"recur.mixins.json",
+		"mocap.mixins.json",
+		{ "config": "recur.client.mixins.json", "environment": "client" }
+	],
+	"suggests": {
+		"voicechat": "*"
+	},
+	"breaks": {
+		"mocap": "*"
+	},
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

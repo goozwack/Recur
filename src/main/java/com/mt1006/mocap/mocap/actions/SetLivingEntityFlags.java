@@ -1,0 +1,71 @@
+package com.mt1006.mocap.mocap.actions;
+
+import com.mt1006.mocap.mocap.files.RecordingFiles;
+import com.mt1006.mocap.mocap.playing.PlayingContext;
+import com.mt1006.mocap.utils.EntityData;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import org.jetbrains.annotations.Nullable;
+
+public class SetLivingEntityFlags implements ComparableAction
+{
+	private final byte livingEntityFlags;
+
+	public SetLivingEntityFlags(Entity entity)
+	{
+		if (!(entity instanceof LivingEntity))
+		{
+			livingEntityFlags = 0;
+			return;
+		}
+		LivingEntity livingEntity = (LivingEntity)entity;
+
+		byte livingEntityFlags = 0;
+		if (livingEntity.isUsingItem()) { livingEntityFlags |= 0x01; }
+		if (livingEntity.getUsedItemHand() == InteractionHand.OFF_HAND) { livingEntityFlags |= 0x02; }
+		if (livingEntity.isAutoSpinAttack()) { livingEntityFlags |= 0x04; }
+		this.livingEntityFlags = livingEntityFlags;
+	}
+
+	public SetLivingEntityFlags(RecordingFiles.Reader reader)
+	{
+		livingEntityFlags = reader.readByte();
+	}
+
+	@Override public boolean differs(ComparableAction action)
+	{
+		return livingEntityFlags != ((SetLivingEntityFlags)action).livingEntityFlags;
+	}
+
+	@Override public void write(RecordingFiles.Writer writer, @Nullable ComparableAction action)
+	{
+		if (action != null && !differs(action)) { return; }
+		writer.addByte(Type.SET_LIVING_ENTITY_FLAGS.id);
+		writer.addByte(livingEntityFlags);
+	}
+
+	@Override public Result execute(PlayingContext ctx)
+	{
+		if (!(ctx.entity instanceof LivingEntity living)) { return Result.IGNORED; }
+		if (ctx.entity != ctx.mainEntity)
+		{
+			// The game stops a use every tick that it didn't start itself (a skeleton's bow was drawn for a moment), so
+			// it's started for real: the bow draws, a crossbow loads.
+			boolean using = (livingEntityFlags & 0x01) != 0;
+			InteractionHand hand = (livingEntityFlags & 0x02) != 0 ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+			if (using && (living.getUseItem().isEmpty() || living.getUsedItemHand() != hand))
+			{
+				living.stopUsingItem();
+				living.startUsingItem(hand);
+			}
+			else if (!using && (living.isUsingItem() || !living.getUseItem().isEmpty())) { living.stopUsingItem(); }
+			if (living instanceof net.minecraft.world.entity.monster.CrossbowAttackMob crossbowMob)
+			{
+				crossbowMob.setChargingCrossbow(using && living.getItemInHand(hand).getItem() instanceof net.minecraft.world.item.CrossbowItem);
+			}
+		}
+		EntityData.LIVING_ENTITY_FLAGS.set(ctx.entity, livingEntityFlags);
+		return Result.OK;
+	}
+}

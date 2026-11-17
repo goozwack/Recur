@@ -1,0 +1,185 @@
+{
+  "mocap.recording.start.already_recording": "§lBłąd:§r nagrywanie już rozpoczęte!",
+  "mocap.recording.start.already_recording.tip": "Użyj \"/mocap recording stop\"",
+  "mocap.recording.start.player_not_found": "§lBłąd:§r nie znaleziono gracza!",
+  "mocap.recording.start.player_not_specified": "§lBłąd:§r nie określono gracza!",
+  "mocap.recording.start.player_not_specified.tip": "Dodaj nazwę gracza do komendy lub wykonaj ją jako gracz",
+  "mocap.recording.start.waiting_for_action": "Wykonaj jakąkolwiek akcję lub użyj \"/mocap recording start\" ponownie, aby zacząć nagrywanie...",
+  "mocap.recording.start.different_player": "§lBłąd:§r \"/mocap recording start\" zostało użyte ponownie z innym graczem na wejściu!",
+  "mocap.recording.start.different_player.tip": "Możesz użyć \"/mocap recording stop\" i spróbować ponownie rozpocząć nagrywanie",
+  "mocap.recording.start.recording_started": "Nagrywanie rozpoczęte...",
+
+  "mocap.recording.stop.server_not_recording": "§lBłąd:§r serwer nic teraz nie nagrywa!",
+  "mocap.recording.stop.waiting_for_decision": "Nagrywanie zatrzymane - oczekiwanie na decyzję...\nUżyj \"/mocap recording save <recording_name>\" aby zapisać nagranie\nlub \"/mocap recording stop\" aby je odrzucić.",
+  "mocap.recording.stop.stop_waiting_for_action": "Zaprzestano oczekiwania na wykonanie akcji",
+  "mocap.recording.stop.recording_discarded": "Nagranie odrzucone",
+
+  "mocap.recording.save.nothing_to_save": "§lBłąd:§r nie ma nic do zapisania!",
+  "mocap.recording.save.nothing_to_save.tip": "Musisz najpierw rozpocząć nagrywanie",
+  "mocap.recording.save.waiting_for_action": "§lBłąd:§r nie ma nic do zapisania!",
+  "mocap.recording.save.waiting_for_action.tip": "Aby rozpocząć nagrywanie, wykonaj jakąkolwiek akcję lub użyj ponownie \"/mocap recording start\"",
+  "mocap.recording.save.recording_not_stopped": "§lBłąd:§r nagrywanie nie zostało zatrzymane!",
+  "mocap.recording.save.recording_not_stopped.tip": "Aby zapisać nagranie, musisz najwierw zatrzymać nagrywanie, używając \"/mocap recording stop\"",
+  "mocap.recording.save.file_already_exist": "§lBłąd:§r nie udało się zapisać nagrania!",
+  "mocap.recording.save.file_already_exist.tip": "Nagranie o tej nazwie może już istnieć",
+  "mocap.recording.save.exception": "§lBłąd:§r nie udało się zapisać nagrania!",
+  "mocap.recording.save.success": "Nagranie pomyślnie zapisane",
+
+  "mocap.recording.state.not_recording": "§lStan:§r NOT_RECORDING",
+  "mocap.recording.state.waiting_for_action": "§lStan:§r WAITING_FOR_ACTION",
+  "mocap.recording.state.recording": "§lStan:§r RECORDING",
+  "mocap.recording.state.waiting_for_decision": "§lStan:§r WAITING_FOR_DECISION",
+  "mocap.recording.state.player_name": "§lNazwa gracza:§r %s",
+
+
+  "mocap.recordings.copy.failed": "Nie udało się skopiować nagrania!",
+  "mocap.recordings.copy.success": "Nagranie pomyślnie skopiowane",
+
+  "mocap.recordings.rename.failed": "Nie udało się zmienić nazwy nagrania!",
+  "mocap.recordings.rename.success": "Pomyślnie zmieniono nazwę nagrania",
+
+  "mocap.recordings.remove.failed": "Nie udało się usunąć nagrania!",
+  "mocap.recordings.remove.success": "Nagranie pomyślnie usunięte",
+
+  "mocap.recordings.info.failed": "Nie udało się uzyskać informacji o nagraniu!",
+  "mocap.recordings.info.info": "§l[INFORMACJE O NAGRANIU]§r",
+  "mocap.recordings.info.length": "§lDługość:§r %s s (%d ticków)",
+  "mocap.recordings.info.size": "§lRozmiar:§r %s KB (%d operacji)",
+  "mocap.recordings.info.start_pos": "§lPozycja początkowa:§r %s %s %s",
+
+  "mocap.recordings.list": "§lNagrania:§r%s",
+
+
+  "mocap.scenes.add.error": "§lBłąd:§r nie udało się dodać sceny!",
+  "mocap.scenes.add.error.file_already_exists": "Scena o tej nazwie może już istnieć",
+  "mocap.scenes.add.success": "Scena dodana pomyślnie",
+
+  "mocap.scenes.copy.failed": "Nie udało się skopiować sceny!",
+  "mocap.scenes.copy.success": "Scena pomyślnie skopiowana",
+
+  "mocap.scenes.rename.failed": "Nie udało się zmienić nazwy sceny!",
+  "mocap.scenes.rename.success": "Pomyślnie zmieniono nazwę sceny",
+
+  "mocap.scenes.remove.failed": "Nie udało się usunąć sceny!",
+  "mocap.scenes.remove.success": "Scena pomyślnie usunięta",
+
+  "mocap.scenes.add_to.error": "§lBłąd:§r nie udało się dodać elementu do sceny!",
+  "mocap.scenes.add_to.error.too_long_name": "Maksymalna długość nazwy gracza to 16",
+  "mocap.scenes.add_to.error.contain_spaces": "Nazwa gracza nie może zawierać spacji",
+  "mocap.scenes.add_to.success": "Element pomyślnie dodany do sceny",
+
+  "mocap.scenes.remove_from.error": "§lBłąd:§r nie udało się usunąć elementu ze sceny!",
+  "mocap.scenes.remove_from.success": "Element pomyślnie usunięty ze sceny",
+
+  "mocap.scenes.modify.error": "§lError:§r unable to modify scene element!",
+  "mocap.scenes.modify.success": "Element successfully modified",
+
+  "mocap.scenes.element_info.failed": "Nie udało się uzyskać informacji o elemencie sceny!",
+  "mocap.scenes.element_info.info": "§l[INFORMACJE O ELEMENCIE SCENY]§r",
+  "mocap.scenes.element_info.id": "§lScena/Pozycja:§r %s / %d",
+  "mocap.scenes.element_info.name": "§lNazwa:§r %s",
+  "mocap.scenes.element_info.player_name.default": "§lNazwa gracza:§r §7§o[default]§r",
+  "mocap.scenes.element_info.player_name.custom": "§lNazwa gracza:§r %s",
+  "mocap.scenes.element_info.skin.default": "§lSkórka:§r §7§o[default]§r",
+  "mocap.scenes.element_info.skin.profile": "§lSkórka:§r gracza - %s",
+  "mocap.scenes.element_info.skin.file": "§lSkórka:§r z pliku - %s",
+  "mocap.scenes.element_info.skin.mineskin": "§lSkórka:§r z mineskin.org:",
+  "mocap.scenes.element_info.start_delay": "§lOpóźnienie startu:§r %s s (%d ticks)",
+  "mocap.scenes.element_info.offset": "§lPrzesunięcie pozycji:§r [%f; %f; %f]",
+  "mocap.scenes.element_info.player_as_entity.disabled": "§lGracz jako byt:§r §7§o[disabled]§r",
+  "mocap.scenes.element_info.player_as_entity.enabled": "§lGracz jako byt:§r %s",
+
+  "mocap.scenes.list_elements": "§lLista elementów w scenie:§r",
+
+  "mocap.scenes.info.failed": "Nie udało się uzyskać informacji o scenie!",
+  "mocap.scenes.info.info": "§l[INFORMACJE O SCENIE]§r",
+  "mocap.scenes.info.size": "§lRozmiar:§r %s KB (%d elementów)",
+
+  "mocap.scenes.list": "§lSceny:§r%s",
+
+  "mocap.scenes.error.file_not_exists": "Scena o tej nazwie nie istnieje",
+  "mocap.scenes.error.wrong_element_pos": "Element o podanym numerze nie istnieje",
+  "mocap.scenes.error.wrong_element_pos.tip": "Użyj \"/mocap scenes listElements [scene]\" aby uzyskać numery poszczególnych elementów",
+
+
+  "mocap.playing.start.error": "§lBłąd:§r nie udało się rozpocząć odtwarzania sceny!",
+  "mocap.playing.start.error.loop": "Scena lub podsceny zawierają siebie nawzajem",
+  "mocap.playing.start.error.load": "Nie udało się załadować wszystkich zasobów",
+  "mocap.playing.start.error.load.path": "Ścieżka zasobu: %s",
+  "mocap.playing.start.error.load_header": "Nie udało się załadować nagłówka nagrania",
+  "mocap.playing.start.error.profile": "Nie udało się załadować profilu gracza",
+  "mocap.playing.start.warning.unknown_entity": "Próba użycia nieznanego bytu jako gracza",
+  "mocap.playing.start.warning.skin.profile": "Nie udało się załadować skórki z profilu gracza",
+  "mocap.playing.start.warning.skin.file": "Nie udało się załadować skórki z pliku",
+  "mocap.playing.start.warning.skin.mineskin": "Nie udało się załadować skórki z mineskin.org",
+  "mocap.playing.start.success": "Odtwarzanie rozpoczęte...",
+
+  "mocap.playing.stop.unable_to_find_scene": "§lBłąd:§r nie udało się znaleźć sceny o podanym numerze!",
+  "mocap.playing.stop.unable_to_find_scene.tip": "Użyj \"/mocap playing list\" aby uzyskać listę wszystkich obecnie odtwarzanych scen",
+  "mocap.playing.stop.success": "Odtwarzanie zatrzymane",
+
+  "mocap.playing.stop_all.success": "Odtwarzanie wszystkich scen zatrzymane",
+
+  "mocap.playing.list": "§lObecnie odtwarzane:§r",
+
+
+  "mocap.settings.error": "§lBłąd:§r nie udało się znaleźć ustawienia!",
+
+  "mocap.settings.list": "§lUstawienia:§r",
+  "mocap.settings.list.info": "%s: %s",
+  "mocap.settings.list.info_def": "%s: %s §7§o[domyślnie]§r",
+
+  "mocap.settings.info.name": "§lNazwa:§r %s",
+  "mocap.settings.info.about.playingSpeed": "§lO ustawieniu:§r Pozwala na zmianę prędkości odtwarzania nagrania lub sceny",
+  "mocap.settings.info.about.recordingSync": "§lO ustawieniu:§r Ułatwia nagrywanie skomplikowanych scen przez synchronizację startu odtwarzanej sceny ze startem nagrywania",
+  "mocap.settings.info.about.playBlockActions": "§lO ustawieniu:§r Odtwarza stawianie, niszczenie i interakcje z blokami",
+  "mocap.settings.info.about.setBlockStates": "§lO ustawieniu:§r Na początku odtwarzania ustawia stany bloków na te przed rozpoczęciem nagrywania",
+  "mocap.settings.info.about.allowMineskinRequests": "§lO ustawieniu:§r Zezwala na żądania HTTPS do mineskin.org w celu załadowania skórek",
+  "mocap.settings.info.about.canPushEntities": "§lO ustawieniu:§r Sprawia, że odtwarzani gracze mogą popychać inne istoty",
+  "mocap.settings.info.about.useCreativeGameMode": "§lO ustawieniu:§r Ustawia tryb gry odtwarzaynych graczy na kreatywny (potwory będą ich ignorować)",
+  "mocap.settings.info.about.dropFromBlocks": "§lO ustawieniu:§r Włącza łup z niszczonych bloków (zalecane przy wyłączonym \"playItemEntities\" w celu zapobiegnięcia duplikatom)",
+  "mocap.settings.info.about.trackVehicleEntities": "§lO ustawieniu:§r Włącza śledzenie (nagrywanie) pojazdów (np. łódek, koni)",
+  "mocap.settings.info.about.trackItemEntities": "§lO ustawieniu:§r Włącza śledzenie (nagrywanie) przedmiotów (jako byty)",
+  "mocap.settings.info.about.trackOtherEntities": "§lO ustawieniu:§r Włącza śledzenie (nagrywanie) bytów innych niż pojazdy i przedmioty",
+  "mocap.settings.info.about.trackPlayedEntities": "§lO ustawieniu:§r Włącza śledzenie (nagrywanie) bytów które są obecnie odtwarzane",
+  "mocap.settings.info.about.entityTrackingDistance": "§lO ustawieniu:§r Ogranicza zasięg śledzenia bytów (>0 - promień śledzenia w blokach; 0 - śledzenie wyłączone; -1 - zasięg śledzenia nieograniczony)",
+  "mocap.settings.info.about.playVehicleEntities": "§lO ustawieniu:§r Włącza odtwarzanie pojazdów (np. łódek, koni)",
+  "mocap.settings.info.about.playItemEntities": "§lO ustawieniu:§r Włącza odtwarzanie przedmiotów (jako byty)",
+  "mocap.settings.info.about.playOtherEntities": "§lO ustawieniu:§r Włącza odtwarzanie bytów innych niż pojazdy i przedmioty",
+  "mocap.settings.info.about.entitiesAfterPlayback": "§lO ustawieniu:§r Określa co się stanie z bytami po odtwarzaniu (-1 - uwolnij jako normalne byty; 0 - zostaw bez zmian; 1 - usuń; 2 - zabij z animacją)",
+  "mocap.settings.info.about.preventSavingEntities": "§lO ustawieniu:§r Zapobiega zapisaniu odtwarzanych bytów np. w przypadku wyjścia z gry",
+  "mocap.settings.info.about.recordPlayerDeath": "§lO ustawieniu:§r Włącza nagrywanie śmierci gracza i zatrzymuje nagranie w tym momencie",
+  "mocap.settings.info.about.fluentMovements": "§lAbout:§r Określa dystans od odtwarzanego bytu do gracza, aby ten otrzymywał dodatkowe pakiety w celu uzyskania płynniejszych ruchów (>0 - dystans w blokach; 0 - wyłącz płynne ruchy; -1 - bez limitu)",
+  "mocap.settings.info.val": "§lObecna wartość:§r %s",
+  "mocap.settings.info.def_val": "§lDomyślna wartość:§r %s",
+
+  "mocap.settings.set.error": "§lBłąd:§r nie udało się odczytać wartości wejściowej!",
+  "mocap.settings.set": "Wartość zmieniona z %s na %s",
+
+
+  "mocap.help": "%s - §lPomoc§r\n  /mocap recording [...] - Nagrywanie ruchów gracza\n  /mocap recordings [...] - Zarządzanie plikami nagrań\n  /mocap scenes [...] - Tworzenie i modyfikowanie scen\n  /mocap playing [...] - Odtwarzanie scen i nagrań\n  /mocap settings [...] - Pokazuje i modyfikuje ustawienia\n  /mocap info - Pokazuje informacje o modzie\n  /mocap help - Pokazuje tą wiadomość\n§lJak używać:§r\n- Najpierw musisz rozpocząć nagrywanie używając \"/mocap recording start\". Nagrane zostaną wszystkie ruchy twoje lub ruchy gracza danego jako argument w poleceniu.\n- Następnie, możesz przerwać nagrywanie przy użyciu \"/mocap recording stop\" i zapisać je używając \"/mocap recording save <nazwa>\".\n- Użyj \"/mocap playing start <nazwa>\" aby odtworzyć nagranie.\n- Możesz także tworzyć sceny do których można dodawać wiele nagrań lub innych scen, z parametrami takimi jak nazwa gracza, przesunięcie pozycji, czy opóźnienie startu.\n- Aby utworzyć scenę użyj \"/mocap scenes add <nazwa_sceny>\". Następnie, dodaj swoje nagranie używając \"/mocap scenes addTo <nazwa_sceny> <nazwa_nagrania> [opóźnienie] [offset_x] [offset_y] [offset_z] [nazwa_gracza] [typ_źródła_skórki] [źródło_skórki]\" (możesz pominąć argumenty w nawiasach kwadratowych, jeśli chcesz).\n- Aby odtworzyć scenę użyj \"/mocap playing start .<nazwa_sceny>\" - musisz umieścić kropkę przed nazwą sceny.\n- Umieszczając kropkę przed nazwą, kiedy korzystasz z \"/mocap scenes addTo ...\", możesz także dodawać sceny do innej sceny.",
+
+
+  "mocap.list.empty": "§7§o[puste]§r",
+  "mocap.list.error": "§c§o[błąd]§r",
+
+
+  "mocap.file.info.name": "§lNazwa:§r %s",
+  "mocap.file.info.version.current": "§lWersja formatu:§r %d §7§o[obecna]§r",
+  "mocap.file.info.version.old": "§lWersja formatu:§r %d §7§o[stara]§r",
+  "mocap.file.info.version.unknown": "§lWersja formatu:§r %d §7§o[nieznana/niezdefiniowana]§r",
+  "mocap.file.info.version.not_supported": "§lWersja formatu:§r %d §7§o[niewspierana]§r",
+
+
+  "mocap.warning.custom_skin_cache_limit": "§lUwaga:§r osiągnięto limit rozmiaru pamięci podręcznej własnych skórek!",
+  "mocap.warning.custom_skin_cache_limit.tip": "Dołącz ponownie do świata, aby ją wyczyścić",
+
+
+  "mocap.error.failed_to_init_directories": "§lBłąd:§r nie udało się zainicjalizować folderów!",
+  "mocap.error.unable_to_get_argument": "§lBłąd:§r nie udało się pobrać argumentów!",
+  "mocap.error.improper_name": "§lBłąd:§r niewłaściwa nazwa nagrania!",
+  "mocap.error.improper_name.character": "Możesz używać tylko małych liter, liczb, podkreślnika, myślnika, lub kropki",
+  "mocap.error.improper_name.dot_first": "Nie możesz użyć kropki jako pierwszego znaku",
+  "mocap.error.failed_to_load_scene": "§lBłąd:§r nie udało się załadować pliku sceny!",
+  "mocap.error.failed_to_load_scene.not_supported": "§lBłąd:§r nie udało się załadować pliku sceny!\nNiewspierana wersja pliku sceny"
+}
